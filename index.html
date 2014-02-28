@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hex calc</title>
+    <link href="style/style.css" rel="stylesheet">
+  </head>
+</html>
+<body></body>
+<input type="text" placeholder="code: 239" class="calc__result">
+<div class="calc-wrapper">
+  <div class="calc">
+    <div class="calc__row"><span class="calc__digi">x</span><span class="calc__digi">&lt;</span><span class="calc__digi calc__digi--empty"></span><span class="calc__digi">&gt;</span><span class="calc__digi">←</span>
+    </div>
+    <div class="calc__row"><span class="calc__digi">(</span><span class="calc__digi">*</span><span class="calc__digi">+</span><span class="calc__digi">/</span><span class="calc__digi">)</span>
+    </div>
+    <div class="calc__row"><span class="calc__digi calc__digi--empty"></span><span class="calc__digi">6</span><span class="calc__digi">-</span><span class="calc__digi">8</span><span class="calc__digi calc__digi--empty"></span>
+    </div>
+    <div class="calc__row"><span class="calc__digi">5</span><span class="calc__digi">1</span><span class="calc__digi">7</span><span class="calc__digi">3</span><span class="calc__digi">9</span>
+    </div>
+    <div class="calc__row"><span class="calc__digi">0</span><span class="calc__digi">.</span><span class="calc__digi">2</span><span class="calc__digi">=</span><span class="calc__digi">4</span>
+    </div>
+  </div>
+  <div class="hexwarn">
+    <div class="hexwarn__title">否定</div>
+    <div class="hexwarn__subtitle">運算符錯置</div>
+    <div class="hexwarn__subtitle--en">operator site is wrong</div>
+  </div>
+</div>
+<button class="enable3d-btn">
+  <label for="enable3d">enable3d
+    <input id="enable3d" type="checkbox">
+  </label>
+</button>
+<script src="./script/app.js"></script>
