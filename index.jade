@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title Hex calc
+    link(href='style/style.css', rel='stylesheet')
+
+body
+- var ddd = [['x','<','','>','←'],['(','*','+','/',')'],['','6','-','8',''],['5','1','7','3','9'],['0','.','2','=','4']];
+
+input.calc__result(type='text', placeholder='code: 239')
+.calc-wrapper
+  .calc
+    each dd in ddd
+      .calc__row
+        each d in dd
+          if d == ''
+            span.calc__digi.calc__digi--empty
+          else
+            span.calc__digi= d + ''
+
+  .hexwarn
+    .hexwarn__title 否定
+    .hexwarn__subtitle 運算符錯置
+    .hexwarn__subtitle--en operator site is wrong
+
+button.enable3d-btn
+  label(for="enable3d") enable3d
+    input#enable3d(type='checkbox')
+
+script(src='./script/app.js')

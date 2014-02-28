@@ -1,0 +1,214 @@
+$cf {
+  &:after {
+    content ''
+    display table
+    clear both
+  }
+}
+
+@import url(http://fonts.googleapis.com/css?family=Iceland);
+
+$hex-d1 = 20px
+$hex-s3 = round($hex-d1 * tan(60deg), 1)
+$hex-padding = 1
+
+rem(n) {
+  return n * 1rem / 12
+}
+
+// -----
+
+html {
+  font-size 75% // 1rem = 12px
+  background-color #000
+}
+
+body {
+  margin 0
+  text-align center
+  position relative
+}
+html, body {
+  min-height 100%
+  height 100%
+  overflow hidden
+}
+
+.calc__result {
+  // display block
+  position absolute
+  top 0
+  left 50%
+  z-index 2
+  width 12em
+  height 3em
+  margin 2em auto $hex-d1 (0 - @width * .5)
+  text-indent 10px
+  font normal rem(24) monospace
+  color #FF0
+  border none
+  background-color #000
+  box-shadow 0 0 5px 1px #C50
+  outline 0
+}
+
+.calc-wrapper {
+  position absolute
+  top 10em
+  width 100%
+  perspective 200px
+  perspective-origin 50%
+}
+
+.calc {
+  display inline-block
+  padding 40px ($hex-d1 * 3) ($hex-s3 * 2)
+  font 900 rem(48) 'Iceland', monospace
+  background-color #900
+  box-shadow inset 0 0 70px 30px #000
+  .enable3d & {
+    transform rotateX(50deg) translateZ(30px) translateY(-40px)
+  }
+
+  &, & * {
+    &::selection {
+      background-color transparent
+    }
+  }
+}
+
+.calc__row {
+  @extend $cf
+  position relative
+  top (- $hex-s3)
+  margin-right (- $hex-d1)
+}
+
+.calc__digi {
+  display inline-block
+  vertical-align middle
+  text-align center
+  width $hex-d1 * 2
+  height $hex-s3 * 2
+  line-height $hex-s3 * 2
+  white-space nowrap
+  background-color #000
+  color #f00
+  margin-bottom ($hex-padding - $hex-s3 * 2)
+  margin-right ($hex-d1 + $hex-padding * 2)
+  position relative
+  z-index 1
+  cursor pointer
+  &:nth-child(even) {
+    margin-top ($hex-s3 * 2 +$hex-padding)
+  }
+  &:after,
+  &:before {
+    content ''
+    position absolute
+    top 0
+    width 0
+    height 0
+    border $hex-s3 solid transparent
+  }
+  &:before {
+    right 100%
+    border-left none
+    border-right $hex-d1 solid #000
+  }
+  &:after {
+    left 100%
+    border-right none
+    border-left $hex-d1 solid #000
+  }
+  &:hover {
+    color #000
+    background-color #f00
+    z-index 2
+    &:before {
+      border-right-color #f00
+    }
+    &:after {
+      border-left-color #f00
+    }
+  }
+}
+
+.calc__digi--empty {
+  background-color #600
+  pointer-events none
+  &:before {
+    border-right-color #600
+  }
+  &:after {
+    border-left-color #600
+  }
+}
+
+
+
+// -----
+$width-h = 180px;
+
+.hexwarn {
+  position absolute
+  top 10%
+  left 50%
+  margin-left (- $width-h / 2)
+  z-index 5
+  width $width-h
+  border 1px solid #000
+  background-color #000
+  box-shadow 0 0 15px 5px #990
+  color #F00
+  font 900 1em ''
+  pointer-events auto
+  cursor pointer
+  .enable3d & {
+    transform rotateX(10deg) rotateY(0deg) translateZ(70px) translateY(70px)
+  }
+
+  &:before, &:after {
+    content ''
+    display block
+    width 100%
+    height 25px
+    background-image linear-gradient(-60deg, #000 25%, transparent 25%, transparent 50%, #000 50%, #000 75%, transparent 75%, transparent)
+    background-color #ff0
+    background-size: 20px (20px * tan(60deg));
+    animation bgc .75s infinite both, bgp 10s linear infinite
+  }
+  &.hide {
+    display none
+  }
+}
+.hexwarn__title {
+  font-size 5em
+}
+.hexwarn__subtitle,
+.hexwarn__subtitle--en {
+  font-size 2.1em
+  line-height 1.2
+  border 2px solid #f00
+  margin 5px 5px 0
+}
+.hexwarn__subtitle--en {
+  font-size 1em
+  margin 3px 5px 5px
+  text-transform capitalize
+}
+
+@keyframes bgc {
+  0% { background-color #ff0;}
+  90% { background-color #f00;}
+}
+@keyframes bgp {
+  0% {background-position 0 0;}
+  100% {background-position 100% 0;}
+}
+
+.enable3d-btn {
+  position absolute
+  top 0
+  right 0
+}
