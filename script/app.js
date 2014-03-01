@@ -17,7 +17,6 @@
   }, 5*1000);
 
   // enable 3d
-  // el.enable3dBTN = document.querySelector('.enable3d-btn');
   el.enable3dBTN = document.getElementById('enable3d')
   el.body = document.getElementsByTagName('body')[0];
   el.enable3dBTN.addEventListener('click', function () {
